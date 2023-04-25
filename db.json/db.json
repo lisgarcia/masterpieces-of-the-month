@@ -5,7 +5,7 @@
             "artistName": "Kiyohara Yukinobu",
             "title": "Quail and Millet",
             "year": 1682,
-            "month":"april",
+            "month":"April",
             "image_url":"https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
             "object_url": "https://www.metmuseum.org/art/collection/search/45734",
             "rating": "",
@@ -97,6 +97,18 @@
 
 
 
+
+
+},
+{           "id": 9,
+            "artistName": "Camille Pissarro",
+            "title": "Barges at Pontoise",
+            "year": 1876,
+            "birthMonth": "July",
+            "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP-21954-001.jpg",
+            "object_url": "https://www.metmuseum.org/art/collection/search/437302",
+            "rating": ""
+    
 
 
 }
