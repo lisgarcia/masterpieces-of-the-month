@@ -17,36 +17,59 @@
             "year": 1912,
             "birthMonth":"December",
             "image_url":"https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg", 
-                // might have issue with rights for this one
-            "object_url": "https://www.metmuseum.org/art/collection/search/488326?deptids=21&amp;high=on&amp;ft=*&amp;offset=0&amp;rpp=40&amp;pos=4",
+            "object_url": "https://www.metmuseum.org/art/collection/search/488326",
             "rating": ""
 
 
 
 },
-{           "id":"3",
+{           "id":3,
             "artistName": "Paul Cézanne",
             "title": "Bathers Under a Bridge",
             "year": 1900,
             "birthMonth":"January",
             "image_url": "https://images.metmuseum.org/CRDImages/dp/original/DP805572.jpg",
-            "object_url": "https://www.metmuseum.org/art/collection/search/334173?searchField=All&amp;sortBy=relevance&amp;showOnly=openAccess&amp;ft=brooklyn+bridge&amp;offset=0&amp;rpp=40&amp;pos=11",
+            "object_url": "https://www.metmuseum.org/art/collection/search/334173",
             "rating": ""
 },
 {           
-            "id":"4",
+            "id":4,
             "artistName": "George Inness",
             "title": "Sunrise",
             "year": 1887,
             "birthMonth":"May",
             "image_url": "https://images.metmuseum.org/CRDImages/ad/original/DP232470.jpg",
-            "object_url": "https://www.metmuseum.org/art/collection/search/11235?searchField=All&amp;sortBy=relevance&amp;what=Paintings&amp;showOnly=openAccess&amp;ft=*&amp;offset=120&amp;rpp=40&amp;pos=134",
-                "rating": ""
+            "object_url": "https://www.metmuseum.org/art/collection/search/11235",
+            "rating": ""
     
 
 
 },
-{
+{           "id": 5,
+            "artistName": "Paul Cézanne",
+            "title": "Mont Sainte-Victoire and the Viaduct of the Arc River Valley",
+            "year": 1882,
+            "birthMonth":"January",
+            "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP-20099-001.jpg",
+            "object_url": "https://www.metmuseum.org/art/collection/search/435877",
+            "rating": ""
+
+},
+{        
+            "id": 6,
+            "artistName": "Vincent van Gogh",
+            "title": "Irises",
+            "year": 1890,
+            "birthMonth": "March",
+            "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP346474.jpg",
+            "object_url": "https://www.metmuseum.org/art/collection/search/436528",
+
+
+
+
+
+
+}
 
 
 
@@ -54,7 +77,14 @@
 
 
 },
-{
+{           "id":
+            "artistName":
+            "title":
+            "year":
+            "birthMonth":
+            "image_url":
+            "object_url":
+            "rating":
 
 
 
