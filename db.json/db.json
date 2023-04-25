@@ -63,6 +63,22 @@
             "birthMonth": "March",
             "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP346474.jpg",
             "object_url": "https://www.metmuseum.org/art/collection/search/436528",
+            "rating": ""
+
+
+
+
+
+},
+{           "id": 7,
+            "artistName": "Gladys Kleinman",
+            "title": "Bermuda Bound",
+            "year": 1940,
+            "birthMonth": "July",
+            "image_url": "https://images.metmuseum.org/CRDImages/ma/original/43.47.21%20-%20color.JPG",
+            "object_url": "https://www.metmuseum.org/art/collection/search/488137",
+            "rating": ""
+
 
 
 
