@@ -80,27 +80,17 @@
             "rating": ""
 
 
-
-
-
-
-
-}
-
-
-
-
-
-
 },
-{           "id":
-            "artistName":
-            "title":
-            "year":
-            "birthMonth":
-            "image_url":
-            "object_url":
-            "rating":
+
+
+{           "id": 8,
+            "artistName": "Ludovico Carracci",
+            "title": "The Lamentation",
+            "year": 1582,
+            "birthMonth": "April",
+            "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP-26972-001.jpg",
+            "object_url": "https://www.metmuseum.org/art/collection/search/438427",
+            "rating": ""
 
 
 
