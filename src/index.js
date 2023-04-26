@@ -104,11 +104,11 @@ function removeFavorite(id){
     .then(res => res.json())
 }
 
-function getFavoriteId(){
+function checkForRemoveFav(){
   fetch(`http://localhost:3000/favorites`)
   .then(response => response.json())
   .then(response => response.forEach((fav) => {if(fav.title === detailsTitle.textContent)
-    {console.log(fav.id)}
+    removeFavorite(fav.id)
   }))
   
 }
@@ -228,7 +228,7 @@ favoriteBtn.addEventListener('click', () => {
 })
 
 removeFavBtn.addEventListener('click', () => {
-  getFavoriteId()
+  checkForRemoveFav()
   //removeFavorite(getFavoriteId())
 })
 
