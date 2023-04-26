@@ -131,7 +131,6 @@ function renderImage(image){
     let newImageDiv = document.createElement('div')
      //if (imageCounter % 2 == 0 ){newImageDiv.classList.add("column")}
     let newImage = document.createElement('img')
-
     newImage.src = image.image_url
     newImage.setAttribute("id", image.id)
     
@@ -176,32 +175,37 @@ function populate(){
 
 
 function ratingForm (someImage) {   //add ratings to art pieces
-  const artRating=document.createElement('SELECT')
+  const artForm=document.createElement('form')
+  const artRating=document.createElement('select')
   artRating.id="rating-form"
-  let ratingOption=document.createElement('option')
- // artRating.innerHTML="Select Rating"
- ratingOption.value=1
- artRating.append(ratingOption)
+  let ratings = [1,2,3,4,5,6,7,8,9,10]
+  ratings.forEach(el => {
+    let ratingOption=document.createElement('option')
+    ratingOption.value=el
+    ratingOption.textContent=el
+    artRating.append(ratingOption)
+  })
+
   artRating.addEventListener('select', (e) => {
-      e.preventDefault()
+    
   })
   artRating.type='number'
-  artRating.value=1,2,3,4
-  someImage.append(artRating)  
+  someImage.append(artForm)  
+  artForm.append(artRating)  
 }
-//ratingForm()
 
-// function patchRating(id) {
-//   fetch(`http://localhost:3000/masterpieces/${id}`), {
-//     method:'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json'},
-//       body: JSON.stringify(imageContainer)
-//     }
-//     .then(res=>res.json())
-//     }
 
-//     patchRating()
+function patchRating(id) {
+  fetch(`http://localhost:3000/masterpieces/${id}`, {
+    method:'PATCH',
+    headers: {
+      'Content-Type': 'application/json'},
+    body: JSON.stringify(id)
+    })
+    .then(res=>res.json())
+    
+  }
+
 
 
 //***********ADD-DELETE-BUTTON FUNCTION******** */

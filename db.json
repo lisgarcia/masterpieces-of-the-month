@@ -5,19 +5,19 @@
       "artistName": "Kiyohara Yukinobu",
       "title": "Quail and Millet",
       "year": 1682,
-      "birthMonth": "April",
+      "month": "April",
       "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
       "object_url": "https://www.metmuseum.org/art/collection/search/45734",
       "rating": ""
     },
     {
       "id": 2,
-      "artistName": "John Marin",
-      "title": "Brooklyn Bridge",
-      "year": 1912,
+      "artistName": "Georges Seurat",
+      "title": "Study for A Sunday on La Grande Jatte",
+      "year": 1884,
       "birthMonth": "December",
-      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
-      "object_url": "https://www.metmuseum.org/art/collection/search/488326",
+      "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP259921.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/437658",
       "rating": ""
     },
     {
@@ -111,16 +111,6 @@
       "rating": ""
     },
     {
-      "id": 11,
-      "artistName": "Henri-Edmond Cross",
-      "title": "Venice: Night of the Festival of the Redeemer",
-      "year": 1582,
-      "birthMonth": "May",
-      "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DP-13665-056.jpg",
-      "object_url": "https://www.metmuseum.org/art/collection/search/459728",
-      "ratng": ""
-    },
-    {
       "id": 12,
       "artistName": "Utagawa Kuniyoshi",
       "title": "Three Beauties Playing Musical Instruments",
@@ -149,6 +139,16 @@
       "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DT1342.jpg",
       "object_url": "https://www.metmuseum.org/art/collection/search/436446",
       "rating": ""
+    },
+    {
+      "id": 15,
+      "artistName": "Auguste Renoir",
+      "title": "Two Young Girls at the Piano",
+      "year": 1892,
+      "birthMonth": "February",
+      "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DT3131.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/459112",
+      "rating": ""
     }
   ],
   "Favorites": [
@@ -161,6 +161,41 @@
       "object_url": "https://www.metmuseum.org/art/collection/search/11235",
       "rating": "",
       "id": 1
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 2
+    },
+    {
+      "artistName": "",
+      "title": "",
+      "year": "",
+      "image_url": "file://wsl.localhost/Ubuntu/home/lisgar/Development/code/phase-1/masterpieces-of-the-month/index.html",
+      "rating": "",
+      "id": 3
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 4
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 5
     }
   ]
 }
