@@ -3,11 +3,15 @@ const localUrl = 'http://localhost:3000/masterpieces'
 // const rijksUrl = `https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&${category}=${query}`
 // const metUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects?${query}`
 const imageContainer = document.querySelector('#image-container')
-const focusImage = document.querySelector('#focus-image')
-const detailsImage = document.querySelector('#image-details')
-const detailsTitle = document.querySelector('#image-title')
-const detailsArtist = document.querySelector('#artist-name')
-const detailsYear = document.querySelector('#art-year')
+const focusImage = document.querySelector('.focus-image')
+const details = document.querySelector('#image-details')
+const detailsTitle = document.querySelector('#image-title-content')
+const detailsArtist = document.querySelector('#artist-name-content')
+const detailsYear = document.querySelector('#art-year-content')
+const favoriteBtn = document.querySelector('#favoriteBtn')
+let favoriteCount = 0;
+let birthMonth;
+let objectUrl;
 //const newImageForm = document.querySelector('#new-image-form')
 // let imageCounter =0;  //used to make columns and rows
 
@@ -15,9 +19,6 @@ const detailsYear = document.querySelector('#art-year')
 
 
 //*********TO DO LIST****** */
-//View different pieces (GET) LOCAL URL
-        //render the different pieces individually
-        //be able to click one to see its details 
 
 // Create a “favorite art list/your own collection” -  this would be done on local and then pieces would be selected from the public external API (POST)
         //requires a favorite button that triggers an event which POSTS to the local db
@@ -32,15 +33,9 @@ const detailsYear = document.querySelector('#art-year')
         //on hover event listener
         //css styling to make a grid
 
-
-
-
-
-
-
-
-
+        
 //************FETCH REQUESTS**************** */
+
 function getRijks(category,query){
     fetch(`https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&${category}=${query}`)
     .then((resp) => resp.json())
@@ -49,14 +44,14 @@ function getRijks(category,query){
 
 function getMet(parameter){
     fetch(``)
-    .then((resp) => resp.json())
-    .catch((error) => console.log(error.message))
+      .then((resp) => resp.json())
+      .catch((error) => console.log(error.message))
 }
 
 function getLocal(id){
     return fetch(`${localUrl}/${id}`)
-    .then((resp) => resp.json())
-    .catch((error) => console.log(error.message))
+      .then((resp) => resp.json())
+      .catch((error) => console.log(error.message))
 }
 
 function postLocal(url,data){
@@ -67,9 +62,46 @@ function postLocal(url,data){
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    }).then(res => res.json())
+  })
+      .then(res => res.json())
       .then(res => console.log(res));
-    }
+}
+
+function deleteLocal(url, data){
+  fetch(url, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify(data)
+      .then(res => res.json())
+      .then(() => {
+      someImage.remove()
+    })
+  })
+}
+
+function postFavorite(data){
+  fetch("http://localhost:3000/favorites", {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+    .then(res => res.json())
+    .then(res => console.log(res));
+}
+
+// function getFavoritesLength(){             //can maybe be used to keep storing favorites without conflict when the webpage is refreshed
+//   fetch("http://localhost:3000/favorites")       //async issues at the moment?
+//   .then(response => response.json())
+//   .then(response => favoriteCount = response.length)
+//   console.log(favoriteCount + "is how many favorites there are")
+// }
+
 //************END FETCH REQUESTS***************** */
 
 
@@ -80,10 +112,13 @@ function renderImage(image){
     let newImageDiv = document.createElement('div')
      //if (imageCounter % 2 == 0 ){newImageDiv.classList.add("column")}
     let newImage = document.createElement('img')
+
     newImage.src = image.image_url
     newImage.setAttribute("id", image.id)
+    
     addDeleteButton(newImageDiv)
     addDetailsClick(newImage)
+
     newImageDiv.append(newImage)
     imageContainer.append(newImageDiv)
     // imageCounter++; //used to make columns/rows
@@ -91,10 +126,16 @@ function renderImage(image){
 
 function showDetails(id){
     getLocal(id)
-    .then(response => {focusImage.src = response.image_url
-                        detailsTitle.textContent = `Title: ${response.title}`
-                        detailsArtist.textContent = `Artist: ${response.artistName}`
-                        detailsYear.textContent = `Year: ${response.year}`
+    .then(response => {
+      focusImage.src = response.image_url
+      detailsTitle.textContent = `${response.title}`
+      detailsArtist.textContent = `${response.artistName}`
+      detailsYear.textContent = `${response.year}`
+      focusImage.setAttribute("id" , id)
+      birthMonth = response.birthMonth
+      console.log(birthMonth)
+      objectUrl = response.object_url
+      console.log(objectUrl)
     })
 }
 
@@ -127,19 +168,15 @@ function addDeleteButton (someImage){
 const deleteButton = document.createElement("button")  
 //set the text to "Delete"
 deleteButton.innerHTML = "Delete"
+//give the delete button an ID
+deleteButton.setAttribute('id', 'delete-button')
 //append the delete button to each image (via iteration within the renderImage function)
 someImage.append(deleteButton)
 //add an event listener to the delete button
   //deletes the associated image on click
-deleteButton.addEventListener('click', (e) =>{
-  e.preventDefault()
-  fetch('INSERT URL HERE', {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json'
-       },
-    })
-  .then(res => res.json())
+deleteButton.addEventListener('click', (event) =>{
+  event.preventDefault()
+  deleteLocal(localUrl, someImage)
   })
 }
 //***********END DELETE ARTWORK******** */
@@ -151,6 +188,25 @@ function addDetailsClick(someImage){
         showDetails(event.target.id)
     })
 }
+
+//FAVORITE BUTTON EVENT LISTENER
+favoriteBtn.addEventListener('click', () => {
+  //getFavoritesLength()
+  favoriteCount++;
+  
+  let newFavorite = {
+        "id" : favoriteCount,
+        "artistName": detailsArtist.textContent,
+        "title": detailsTitle.textContent,
+        "year": detailsYear.textContent,
+        "birthMonth": birthMonth,
+        "image_url": focusImage.src,
+        "object_url": objectUrl,
+        "rating": ""
+  }
+  postFavorite(newFavorite)
+  //console.log(favoriteCount + "is how many favorites there are")
+})
 
 //*************EVENT LISTENERS******* */
 
