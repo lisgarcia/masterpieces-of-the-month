@@ -3,16 +3,7 @@ const localUrl = 'http://localhost:3000/masterpieces'
 // const rijksUrl = `https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&${category}=${query}`
 // const metUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects?${query}`
 const imageContainer = document.querySelector('#image-container')
-const focusImage = document.querySelector('.focus-image')
-const details = document.querySelector('#image-details')
-const detailsTitle = document.querySelector('#image-title-content')
-const detailsArtist = document.querySelector('#artist-name-content')
-const detailsYear = document.querySelector('#art-year-content')
-const favoriteBtn = document.querySelector('#favoriteBtn')
-const removeFavBtn = document.querySelector('#removeFavBtn')
-let favoriteCount = 0;
-let birthMonth;
-let objectUrl;
+
 //const newImageForm = document.querySelector('#new-image-form')
 // let imageCounter =0;  //used to make columns and rows
 
@@ -173,12 +164,36 @@ function populate(){
 
 //**********END GENERAL FUNCTION DECLARATION****** */
 
-//Artwork ratings PATCH request
-// const artRating=document.createElement('input')
-// artRating.type='number'
-// artRating.value=artPiece.rating
+// //Artwork ratings PATCH request
 
-// //append rating to artPieceInfo
+
+function ratingForm (someImage) {   //add ratings to art pieces
+  const artRating=document.createElement('SELECT')
+  artRating.id="rating-form"
+  let ratingOption=document.createElement('option')
+ // artRating.innerHTML="Select Rating"
+ ratingOption.value=1
+ artRating.append(ratingOption)
+  artRating.addEventListener('select', (e) => {
+      e.preventDefault()
+  })
+  artRating.type='number'
+  artRating.value=1,2,3,4
+  someImage.append(artRating)  
+}
+//ratingForm()
+
+// function patchRating(id) {
+//   fetch(`http://localhost:3000/masterpieces/${id}`), {
+//     method:'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json'},
+//       body: JSON.stringify(imageContainer)
+//     }
+//     .then(res=>res.json())
+//     }
+
+//     patchRating()
 
 
 //***********ADD-DELETE-BUTTON FUNCTION******** */
