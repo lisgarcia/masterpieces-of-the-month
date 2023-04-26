@@ -8,6 +8,7 @@ const detailsImage = document.querySelector('#image-details')
 const detailsTitle = document.querySelector('#image-title')
 const detailsArtist = document.querySelector('#artist-name')
 const detailsYear = document.querySelector('#art-year')
+
 //const newImageForm = document.querySelector('#new-image-form')
 // let imageCounter =0;  //used to make columns and rows
 
@@ -84,6 +85,7 @@ function renderImage(image){
     newImage.setAttribute("id", image.id)
     addDeleteButton(newImageDiv)
     addDetailsClick(newImage)
+    ratingForm(newImageDiv)
     newImageDiv.append(newImage)
     imageContainer.append(newImageDiv)
     // imageCounter++; //used to make columns/rows
@@ -112,12 +114,36 @@ function populate(){
 
 //**********END GENERAL FUNCTION DECLARATION****** */
 
-//Artwork ratings PATCH request
-// const artRating=document.createElement('input')
-// artRating.type='number'
-// artRating.value=artPiece.rating
+// //Artwork ratings PATCH request
 
-// //append rating to artPieceInfo
+
+function ratingForm (someImage) {   //add ratings to art pieces
+  const artRating=document.createElement('SELECT')
+  artRating.id="rating-form"
+  let ratingOption=document.createElement('option')
+ // artRating.innerHTML="Select Rating"
+ ratingOption.value=1
+ artRating.append(ratingOption)
+  artRating.addEventListener('select', (e) => {
+      e.preventDefault()
+  })
+  artRating.type='number'
+  artRating.value=1,2,3,4
+  someImage.append(artRating)  
+}
+//ratingForm()
+
+// function patchRating(id) {
+//   fetch(`http://localhost:3000/masterpieces/${id}`), {
+//     method:'PATCH',
+//     headers: {
+//       'Content-Type': 'application/json'},
+//       body: JSON.stringify(imageContainer)
+//     }
+//     .then(res=>res.json())
+//     }
+
+//     patchRating()
 
 
 //***********DELETE ARTWORK******** */
