@@ -158,6 +158,19 @@
 
 
 
+},
+{  
+        "id": 14,
+        "artistName": "Paul Gauguin",
+        "title": "Two Tahitian Women",
+        "year": 1899,
+        "birthMonth": "June",
+        "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DT1342.jpg",
+        "object_url": "https://www.metmuseum.org/art/collection/search/436446",
+        "rating": ""
+
+
+
 }
 
     ]
