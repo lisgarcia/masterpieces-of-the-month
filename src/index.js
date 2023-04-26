@@ -3,7 +3,16 @@ const localUrl = 'http://localhost:3000/masterpieces'
 // const rijksUrl = `https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&${category}=${query}`
 // const metUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects?${query}`
 const imageContainer = document.querySelector('#image-container')
-
+const focusImage = document.querySelector('.focus-image')
+const details = document.querySelector('#image-details')
+const detailsTitle = document.querySelector('#image-title-content')
+const detailsArtist = document.querySelector('#artist-name-content')
+const detailsYear = document.querySelector('#art-year-content')
+const favoriteBtn = document.querySelector('#favoriteBtn')
+const removeFavBtn = document.querySelector('#removeFavBtn')
+let favoriteCount = 0;
+let birthMonth;
+let objectUrl;
 //const newImageForm = document.querySelector('#new-image-form')
 // let imageCounter =0;  //used to make columns and rows
 
@@ -128,7 +137,7 @@ function renderImage(image){
     
     addDeleteButton(newImageDiv)
     addDetailsClick(newImage)
-
+    ratingForm(newImageDiv)
     newImageDiv.append(newImage)
     imageContainer.append(newImageDiv)
     // imageCounter++; //used to make columns/rows
