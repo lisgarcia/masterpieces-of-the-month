@@ -131,7 +131,6 @@ function renderImage(image){
     let newImageDiv = document.createElement('div')
      //if (imageCounter % 2 == 0 ){newImageDiv.classList.add("column")}
     let newImage = document.createElement('img')
-
     newImage.src = image.image_url
     newImage.setAttribute("id", image.id)
     
