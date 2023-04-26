@@ -176,19 +176,23 @@ function populate(){
 
 
 function ratingForm (someImage) {   //add ratings to art pieces
-  const artRating=document.createElement('SELECT')
+  const artRating=document.createElement('select')
   artRating.id="rating-form"
-  let ratingOption=document.createElement('option')
- // artRating.innerHTML="Select Rating"
- ratingOption.value=1
- artRating.append(ratingOption)
+  let ratings = [1,2,3,4,5,6,7,8,9,10]
+  ratings.forEach(el => {
+    let ratingOption=document.createElement('option')
+    ratingOption.value=el
+    ratingOption.textContent=el
+    artRating.append(ratingOption)
+  })
+
   artRating.addEventListener('select', (e) => {
-      e.preventDefault()
+ 
   })
   artRating.type='number'
-  artRating.value=1,2,3,4
   someImage.append(artRating)  
 }
+
 //ratingForm()
 
 // function patchRating(id) {
