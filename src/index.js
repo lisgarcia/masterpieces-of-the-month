@@ -19,6 +19,9 @@ let objectUrl;
 //****************END CONST DECLARATIONS************ */
 
 
+
+
+
 //*********TO DO LIST****** */
 
 
@@ -66,19 +69,17 @@ function postLocal(url,data){
       .then(res => console.log(res));
 }
 
-function deleteLocal(url, data){
-  fetch(url, {
+function deleteLocal(id){
+  fetch(`http://localhost:3000/masterpieces/${id}`, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
   })
-    .then(res => res.json())
-    .then((res) => console.log(res))
+  .then ((response) => response.json())
 }
-
+  
 
 function postFavorite(data){
   fetch("http://localhost:3000/favorites", {
@@ -194,7 +195,7 @@ someImage.append(deleteButton)
 deleteButton.addEventListener('click', () => {
 //deletes the associated image on click
   someImage.remove()
-  deleteLocal(localUrl, someImage)
+  deleteLocal(someImage.id)
 })
 }
 //***********END ADD-DELETE-BUTTON FUNCTION******** */
