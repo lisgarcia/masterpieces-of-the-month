@@ -188,26 +188,25 @@ function ratingForm (someImage) {   //add ratings to art pieces
   })
 
   artRating.addEventListener('select', (e) => {
- 
+    
   })
   artRating.type='number'
   someImage.append(artForm)  
   artForm.append(artRating)  
 }
 
-//ratingForm()
 
-// function patchRating(id) {
-//   fetch(`http://localhost:3000/masterpieces/${id}`), {
-//     method:'PATCH',
-//     headers: {
-//       'Content-Type': 'application/json'},
-//       body: JSON.stringify(imageContainer)
-//     }
-//     .then(res=>res.json())
-//     }
+function patchRating(id) {
+  fetch(`http://localhost:3000/masterpieces/${id}`, {
+    method:'PATCH',
+    headers: {
+      'Content-Type': 'application/json'},
+    body: JSON.stringify(id)
+    })
+    .then(res=>res.json())
+    
+  }
 
-//     patchRating()
 
 
 //***********ADD-DELETE-BUTTON FUNCTION******** */
