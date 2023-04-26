@@ -20,6 +20,13 @@ html {
     height: auto;
     width: auto;
   }
+
+  .focus-image {
+    max-width: 500px;
+    max-height: 500px;
+    height: auto;
+    width: auto;
+  }
   
   #main-content {
     position: relative;
