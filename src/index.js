@@ -112,10 +112,18 @@ function populate(){
 
 //**********END GENERAL FUNCTION DECLARATION****** */
 
-//Artwork ratings PATCH request
-// const artRating=document.createElement('input')
-// artRating.type='number'
-// artRating.value=artPiece.rating
+// //Artwork ratings PATCH request
+// const artRating=document.createElement('FORM')
+
+// function addRating (masterpieces) {
+//   const artRating=document.createElement('FORM')
+//   artRating.type='number'
+//   artRating.value=masterpieces.rating
+
+//   artRating.append(artPieceInfo)  
+// }
+// addRating()
+
 
 // //append rating to artPieceInfo
 
