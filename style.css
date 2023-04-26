@@ -63,4 +63,17 @@ html {
   clear: both;
   display: table;
 }
-  
+
+#rating-form {
+  width: 10%;
+  height: 10px;
+  padding: 12px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  background-color:gray;
+  font-size: 10px;
+font-color: 
+}
+
