@@ -152,6 +152,15 @@
     }
   ],
   "Favorites": [
-    
+    {
+      "artistName": "George Inness",
+      "title": "Sunrise",
+      "year": "1887",
+      "birthMonth": "May",
+      "image_url": "https://images.metmuseum.org/CRDImages/ad/original/DP232470.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/11235",
+      "rating": "",
+      "id": 1
+    }
   ]
 }

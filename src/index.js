@@ -9,6 +9,7 @@ const detailsTitle = document.querySelector('#image-title-content')
 const detailsArtist = document.querySelector('#artist-name-content')
 const detailsYear = document.querySelector('#art-year-content')
 const favoriteBtn = document.querySelector('#favoriteBtn')
+const removeFavBtn = document.querySelector('#removeFavBtn')
 let favoriteCount = 0;
 let birthMonth;
 let objectUrl;
@@ -20,8 +21,6 @@ let objectUrl;
 
 //*********TO DO LIST****** */
 
-// Create a “favorite art list/your own collection” -  this would be done on local and then pieces would be selected from the public external API (POST)
-        //requires a favorite button that triggers an event which POSTS to the local db
 
 // Remove a piece from their screen (DELETE)
         //requires a delete button and eventlistener for that delete button
@@ -71,16 +70,15 @@ function deleteLocal(url, data){
   fetch(url, {
     method: 'DELETE',
     headers: {
-      'content-type': 'application/json',
-      accept: 'application/json'
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-      .then(res => res.json())
-      .then(() => {
-      someImage.remove()
-    })
   })
+    .then(res => res.json())
+    .then((res) => console.log(res))
 }
+
 
 function postFavorite(data){
   fetch("http://localhost:3000/favorites", {
@@ -94,6 +92,27 @@ function postFavorite(data){
     .then(res => res.json())
     .then(res => console.log(res));
 }
+
+function removeFavorite(id){
+  fetch(`http://localhost:3000/favorites/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    })
+    .then(res => res.json())
+}
+
+function getFavoriteId(){
+  fetch(`http://localhost:3000/favorites`)
+  .then(response => response.json())
+  .then(response => response.forEach((fav) => {if(fav.title === detailsTitle.textContent)
+    {console.log(fav.id)}
+  }))
+  
+}
+
 
 // function getFavoritesLength(){             //can maybe be used to keep storing favorites without conflict when the webpage is refreshed
 //   fetch("http://localhost:3000/favorites")       //async issues at the moment?
@@ -133,9 +152,9 @@ function showDetails(id){
       detailsYear.textContent = `${response.year}`
       focusImage.setAttribute("id" , id)
       birthMonth = response.birthMonth
-      console.log(birthMonth)
+      //console.log(birthMonth)
       objectUrl = response.object_url
-      console.log(objectUrl)
+      //console.log(objectUrl)
     })
 }
 
@@ -161,41 +180,41 @@ function populate(){
 // //append rating to artPieceInfo
 
 
-//***********DELETE ARTWORK******** */
+//***********ADD-DELETE-BUTTON FUNCTION******** */
 function addDeleteButton (someImage){       
-
 //create a delete button
 const deleteButton = document.createElement("button")  
 //set the text to "Delete"
 deleteButton.innerHTML = "Delete"
 //give the delete button an ID
 deleteButton.setAttribute('id', 'delete-button')
-//append the delete button to each image (via iteration within the renderImage function)
+//append the delete button to the given image
 someImage.append(deleteButton)
 //add an event listener to the delete button
-  //deletes the associated image on click
-deleteButton.addEventListener('click', (event) =>{
-  event.preventDefault()
+deleteButton.addEventListener('click', () => {
+//deletes the associated image on click
+  someImage.remove()
   deleteLocal(localUrl, someImage)
-  })
+})
 }
-//***********END DELETE ARTWORK******** */
+//***********END ADD-DELETE-BUTTON FUNCTION******** */
 
 
 function addDetailsClick(someImage){
-    someImage.addEventListener('click' , (event) => {
-        console.log(event.target.id)
+    someImage.addEventListener('click', (event) => {
+        // console.log(event.target.id)
         showDetails(event.target.id)
-    })
+    }
+  )
 }
 
 //FAVORITE BUTTON EVENT LISTENER
+
 favoriteBtn.addEventListener('click', () => {
   //getFavoritesLength()
   favoriteCount++;
   
   let newFavorite = {
-        "id" : favoriteCount,
         "artistName": detailsArtist.textContent,
         "title": detailsTitle.textContent,
         "year": detailsYear.textContent,
@@ -207,6 +226,13 @@ favoriteBtn.addEventListener('click', () => {
   postFavorite(newFavorite)
   //console.log(favoriteCount + "is how many favorites there are")
 })
+
+removeFavBtn.addEventListener('click', () => {
+  getFavoriteId()
+  //removeFavorite(getFavoriteId())
+})
+
+
 
 //*************EVENT LISTENERS******* */
 
