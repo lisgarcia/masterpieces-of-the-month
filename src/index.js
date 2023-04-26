@@ -176,6 +176,7 @@ function populate(){
 
 
 function ratingForm (someImage) {   //add ratings to art pieces
+  const artForm=document.createElement('form')
   const artRating=document.createElement('select')
   artRating.id="rating-form"
   let ratings = [1,2,3,4,5,6,7,8,9,10]
@@ -190,7 +191,8 @@ function ratingForm (someImage) {   //add ratings to art pieces
  
   })
   artRating.type='number'
-  someImage.append(artRating)  
+  someImage.append(artForm)  
+  artForm.append(artRating)  
 }
 
 //ratingForm()
