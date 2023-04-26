@@ -79,10 +79,7 @@
             "object_url": "https://www.metmuseum.org/art/collection/search/488137",
             "rating": ""
 
-
 },
-
-
 {           "id": 8,
             "artistName": "Ludovico Carracci",
             "title": "The Lamentation",
@@ -91,13 +88,6 @@
             "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP-26972-001.jpg",
             "object_url": "https://www.metmuseum.org/art/collection/search/438427",
             "rating": ""
-
-
-
-
-
-
-
 
 },
 {           "id": 9,
@@ -109,8 +99,6 @@
             "object_url": "https://www.metmuseum.org/art/collection/search/437302",
             "rating": ""
     
-
-
 },
 {           "id": 10,
             "artistName": "Umberto Boccioni",
@@ -121,7 +109,52 @@
             "object_url": "https://www.metmuseum.org/art/collection/search/485540",
             "rating": ""
 
+},
+{
+            "id": 11,
+            "artistName": "Henri-Edmond Cross",
+            "title": "Venice: Night of the Festival of the Redeemer",
+            "year": 1582,
+            "birthMonth": "May",
+            "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DP-13665-056.jpg",
+            "object_url":"https://www.metmuseum.org/art/collection/search/459728",
+            "rating":""
 
+
+
+
+},
+{
+            "id": 11,
+            "artistName": "Henri-Edmond Cross",
+            "title": "Venice: Night of the Festival of the Redeemer",
+            "year": 1582,
+            "birthMonth": "May",
+            "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DP-13665-056.jpg",
+            "object_url":"https://www.metmuseum.org/art/collection/search/459728",
+            "ratng":""
+},
+{
+            "id": 12,
+            "artistName": "Utagawa Kuniyoshi",
+            "title": "Three Beauties Playing Musical Instruments",
+            "year": 1900,
+            "birthMonth": "January",
+            "image_url": "https://images.metmuseum.org/CRDImages/as/original/29_100_537_O.JPG",
+            "object_url": "https://www.metmuseum.org/art/collection/search/40352",
+            "rating": ""
+
+
+},
+{
+        "id": 13,
+        "artistName": "Edgar Degas",
+        "title": "The Little Fourteen-Year-Old Dancer",
+        "year": 1922,
+        "birthMonth": "July",
+        "image_url": "https://images.metmuseum.org/CRDImages/es/original/DP-14939-002.jpg",
+        "object_url": "https://www.metmuseum.org/art/collection/search/196439",
+        "rating": ""
 
 
 
