@@ -15,8 +15,10 @@
       "artistName": "Georges Seurat",
       "title": "Study for A Sunday on La Grande Jatte",
       "year": 1884,
-      "birthMonth": "December",
-      "image_url": "https://images.metmuseum.org/CRDImages/ep/original/DP259921.jpg",
+
+      "birthMonth":"December",
+      "image_url":"https://images.metmuseum.org/CRDImages/ep/original/DP259921.jpg",
+
       "object_url": "https://www.metmuseum.org/art/collection/search/437658",
       "rating": ""
     },
@@ -114,7 +116,7 @@
       "id": 12,
       "artistName": "Utagawa Kuniyoshi",
       "title": "Three Beauties Playing Musical Instruments",
-      "year": 1900,
+      "year": 1830,
       "birthMonth": "January",
       "image_url": "https://images.metmuseum.org/CRDImages/as/original/29_100_537_O.JPG",
       "object_url": "https://www.metmuseum.org/art/collection/search/40352",
@@ -149,17 +151,20 @@
       "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DT3131.jpg",
       "object_url": "https://www.metmuseum.org/art/collection/search/459112",
       "rating": ""
+
+}
     }
+
   ],
   "Favorites": [
     {
-      "artistName": "George Inness",
-      "title": "Sunrise",
-      "year": "1887",
-      "birthMonth": "May",
-      "image_url": "https://images.metmuseum.org/CRDImages/ad/original/DP232470.jpg",
-      "object_url": "https://www.metmuseum.org/art/collection/search/11235",
-      "rating": "",
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "birthMonth": "April",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "3",
       "id": 1
     },
     {
