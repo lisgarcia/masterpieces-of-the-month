@@ -124,7 +124,7 @@
       "id": 12,
       "artistName": "Utagawa Kuniyoshi",
       "title": "Three Beauties Playing Musical Instruments",
-      "year": 1900,
+      "year": 1830,
       "birthMonth": "January",
       "image_url": "https://images.metmuseum.org/CRDImages/as/original/29_100_537_O.JPG",
       "object_url": "https://www.metmuseum.org/art/collection/search/40352",
@@ -151,5 +151,16 @@
       "rating": ""
     }
   ],
-  "Favorites": []
+  "Favorites": [
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "birthMonth": "April",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "2",
+      "id": 1
+    }
+  ]
 }
