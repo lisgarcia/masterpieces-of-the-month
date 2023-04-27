@@ -81,4 +81,16 @@ html {
 }
 
 
+#rating-form {
+
+  padding: 12px 20px;
+  text-align: center;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  background-color:gray;
+  font-size: 10px;
+
+}
+
 

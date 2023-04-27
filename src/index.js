@@ -11,8 +11,10 @@ const detailsArtist = document.querySelector('#artist-name-content')
 const detailsYear = document.querySelector('#art-year-content')
 const favoriteBtn = document.querySelector('#favoriteBtn')
 const removeFavBtn = document.querySelector('#removeFavBtn')
+
 const rating = document.querySelector('#rating-dropdown')
 const searchForm = document.querySelector('#search_form')
+
 let favoriteCount = 0;
 let birthMonth;
 let objectUrl;
@@ -149,13 +151,12 @@ function renderImage(image){
     let newImageDiv = document.createElement('div')
      //if (imageCounter % 2 == 0 ){newImageDiv.classList.add("column")}
     let newImage = document.createElement('img')
-
     newImage.src = image.image_url
     newImage.setAttribute("id", image.id)
     
     //addDeleteButton(newImageDiv)
     addDetailsClick(newImage)
-
+    ratingForm(newImageDiv)
     newImageDiv.append(newImage)
     imageContainer.append(newImageDiv)
     // imageCounter++; //used to make columns/rows
@@ -208,6 +209,7 @@ function populate(){
 // //Artwork ratings PATCH request
 
 
+
 // function ratingForm (someImage) {   //add ratings to art pieces
 //   const artRating=document.createElement('SELECT')
 //   artRating.id="rating-form"
@@ -227,6 +229,40 @@ function populate(){
 
 
 //     patchRating()
+=======
+function ratingForm (someImage) {   //add ratings to art pieces
+  const artForm=document.createElement('form')
+  const artRating=document.createElement('select')
+  artRating.id="rating-form"
+  let ratings = [1,2,3,4,5,6,7,8,9,10]
+  ratings.forEach(el => {
+    let ratingOption=document.createElement('option')
+    ratingOption.value=el
+    ratingOption.textContent=el
+    artRating.append(ratingOption)
+  })
+
+  artRating.addEventListener('select', (e) => {
+    
+  })
+  artRating.type='number'
+  someImage.append(artForm)  
+  artForm.append(artRating)  
+}
+
+
+function patchRating(id) {
+  fetch(`http://localhost:3000/masterpieces/${id}`, {
+    method:'PATCH',
+    headers: {
+      'Content-Type': 'application/json'},
+    body: JSON.stringify(id)
+    })
+    .then(res=>res.json())
+    
+  }
+
+
 
 
 //***********ADD-DELETE-BUTTON FUNCTION******** */

@@ -5,7 +5,7 @@
       "artistName": "Kiyohara Yukinobu",
       "title": "Quail and Millet",
       "year": 1682,
-      "birthMonth": "April",
+      "month": "April",
       "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
       "object_url": "https://www.metmuseum.org/art/collection/search/45734",
       "rating": ""
@@ -15,8 +15,10 @@
       "artistName": "Georges Seurat",
       "title": "Study for A Sunday on La Grande Jatte",
       "year": 1884,
+
       "birthMonth":"December",
       "image_url":"https://images.metmuseum.org/CRDImages/ep/original/DP259921.jpg",
+
       "object_url": "https://www.metmuseum.org/art/collection/search/437658",
       "rating": ""
     },
@@ -149,7 +151,9 @@
       "image_url": "https://images.metmuseum.org/CRDImages/rl/original/DT3131.jpg",
       "object_url": "https://www.metmuseum.org/art/collection/search/459112",
       "rating": ""
+
 }
+    }
 
   ],
   "Favorites": [
@@ -162,6 +166,41 @@
       "object_url": "https://www.metmuseum.org/art/collection/search/45734",
       "rating": "3",
       "id": 1
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 2
+    },
+    {
+      "artistName": "",
+      "title": "",
+      "year": "",
+      "image_url": "file://wsl.localhost/Ubuntu/home/lisgar/Development/code/phase-1/masterpieces-of-the-month/index.html",
+      "rating": "",
+      "id": 3
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 4
+    },
+    {
+      "artistName": "Kiyohara Yukinobu",
+      "title": "Quail and Millet",
+      "year": "1682",
+      "image_url": "https://images.metmuseum.org/CRDImages/as/original/DP251139.jpg",
+      "object_url": "https://www.metmuseum.org/art/collection/search/45734",
+      "rating": "",
+      "id": 5
     }
   ]
 }
