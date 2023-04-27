@@ -1,7 +1,8 @@
 //**************CONST DECLARATIONS************* */
 const localUrl = 'http://localhost:3000/masterpieces'
 // const rijksUrl = `https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&${category}=${query}`
-// const metUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects?${query}`
+const metUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=`
+const metObjectUrl = `https://collectionapi.metmuseum.org/public/collection/v1/objects/`
 const imageContainer = document.querySelector('#image-container')
 const focusImage = document.querySelector('.focus-image')
 const details = document.querySelector('#image-details')
@@ -11,6 +12,7 @@ const detailsYear = document.querySelector('#art-year-content')
 const favoriteBtn = document.querySelector('#favoriteBtn')
 const removeFavBtn = document.querySelector('#removeFavBtn')
 const rating = document.querySelector('#rating-dropdown')
+const searchForm = document.querySelector('#search_form')
 let favoriteCount = 0;
 let birthMonth;
 let objectUrl;
@@ -45,10 +47,18 @@ function getRijks(category,query){
     .catch((error) => console.log(error.message))
 }
 
-function getMet(parameter){
-    fetch(``)
+function getMetSearch(parameter){
+    return fetch(`${metUrl}${parameter}`)
       .then((resp) => resp.json())
+      .then((resp) => resp.objectIDs.forEach(getMetId))
       .catch((error) => console.log(error.message))
+}
+
+function getMetId(objectId){
+   fetch(`${metObjectUrl}${objectId}`)
+    .then((resp) => resp.json())
+    .then((resp) => renderMetImage(resp))
+    .catch((error) => console.log(error.message))
 }
 
 function getLocal(id){
@@ -167,6 +177,20 @@ function showDetails(id){
     })
 }
 
+function renderMetImage(image){
+  let newImageDiv = document.createElement('div')
+    let newImage = document.createElement('img')
+
+    newImage.src = image.primaryImageSmall
+    //newImage.setAttribute("id", image.id)
+    
+    //addDeleteButton(newImageDiv)
+    addDetailsClick(newImage)
+
+    newImageDiv.append(newImage)
+    imageContainer.append(newImageDiv)
+    // imageCounter++; //used to make columns/rows
+}
 
 
 //***********END RENDER FUNCTIONS******** */
@@ -267,5 +291,13 @@ imageContainer.addEventListener("mouseout", (event) => {
   event.target.classList.remove("imgopacity")
 })
 
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  query = searchForm.querySelector('#form_input').value
+  console.log(query)
+  console.log(getMetSearch(query))
+
+  searchForm.querySelector('#form_input').value = ""
+})
 //**************function invokation*** */
 populate()
