@@ -11,10 +11,9 @@ const detailsArtist = document.querySelector('#artist-name-content')
 const detailsYear = document.querySelector('#art-year-content')
 const favoriteBtn = document.querySelector('#favoriteBtn')
 const removeFavBtn = document.querySelector('#removeFavBtn')
-
 const rating = document.querySelector('#rating-dropdown')
 const searchForm = document.querySelector('#search_form')
-
+const showFaveBtn = document.querySelector('#showFaveBtn')
 let favoriteCount = 0;
 let birthMonth;
 let objectUrl;
@@ -30,16 +29,6 @@ let objectUrl;
 //*********TO DO LIST****** */
 
 
-// Remove a piece from their screen (DELETE)
-        //requires a delete button and eventlistener for that delete button
-        
-// Change the rating of pieces in our own collection (PATCH)
-        //probably requires a little up/down arrow on the painting with a number attached to it
-
-//extras
-        //on hover event listener
-        //css styling to make a grid
-
         
 //************FETCH REQUESTS**************** */
 
@@ -52,7 +41,7 @@ function getRijks(category,query){
 function getMetSearch(parameter){
     return fetch(`${metUrl}${parameter}`)
       .then((resp) => resp.json())
-      .then((resp) => resp.objectIDs.forEach(getMetId))
+      .then((resp) => {for (let i=0;i<40;i++) {getMetId(resp.objectIDs[i])}})
       .catch((error) => console.log(error.message))
 }
 
@@ -61,6 +50,17 @@ function getMetId(objectId){
     .then((resp) => resp.json())
     .then((resp) => renderMetImage(resp))
     .catch((error) => console.log(error.message))
+}
+
+function deleteAllMet(){
+  fetch(`http://localhost:3000/MET`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+  })
+  .then ((response) => response.json())
 }
 
 function getLocal(id){
@@ -103,9 +103,12 @@ function postFavorite(data){
     },
     body: JSON.stringify(data)
 })
-    .then(res => res.json())
-    .then(res => console.log(res));
-}
+    //.then(res => res.json())
+    .then(res => {if(res.ok ===true){
+          //favoriteBtn.classList.add("hidden")
+          //removeFavBtn.classList.remove("hidden")
+          //console.log(res);
+    }})}
 
 function removeFavorite(id){
   fetch(`http://localhost:3000/favorites/${id}`, {
@@ -123,6 +126,8 @@ function checkForRemoveFav(){
   .then(response => response.json())
   .then(response => response.forEach((fav) => {if(fav.title === detailsTitle.textContent)
     removeFavorite(fav.id)
+    //favoriteBtn.classList.remove("hidden")
+    //removeFavBtn.classList.add("hidden")
   }))
 }
 
@@ -141,6 +146,27 @@ function checkForRating(){
         patchRating(fav.id)
       }))
     }
+
+
+function checkFavorite(){
+  let isFavorite = false;
+      fetch(`http://localhost:3000/favorites`)
+      .then(response => response.json())
+      .then(response => response.forEach((fav) => {
+        if(fav.title === detailsTitle.textContent){
+            isFavorite = true;
+            console.log("favorite")                   //intention is for this to allow us to decide to display the favorite or unfavorite button (not working atm probably because of async issues)
+        }}))
+  console.log(isFavorite)
+
+}
+
+function renderFavorites(){
+  removeAllChildNodes(imageContainer)
+  fetch(`http://localhost:3000/favorites`)
+  .then(response => response.json())
+  .then(response => response.forEach(renderImage))
+}
 //************END FETCH REQUESTS***************** */
 
 
@@ -149,18 +175,15 @@ function checkForRating(){
 //***********RENDER FUNCTIONS********* */
 function renderImage(image){
     let newImageDiv = document.createElement('div')
-     //if (imageCounter % 2 == 0 ){newImageDiv.classList.add("column")}
     let newImage = document.createElement('img')
     newImage.src = image.image_url
     newImage.setAttribute("id", image.id)
-    
-    //addDeleteButton(newImageDiv)
     addDetailsClick(newImage)
-    ratingForm(newImageDiv)
     newImageDiv.append(newImage)
     imageContainer.append(newImageDiv)
-    // imageCounter++; //used to make columns/rows
 }
+
+
 
 function showDetails(id){
     getLocal(id)
@@ -176,23 +199,33 @@ function showDetails(id){
       //console.log(objectUrl)
       rating.value = ""
     })
+    details.classList.remove("hidden")
+    //checkFavorite()
 }
 
 function renderMetImage(image){
-  let newImageDiv = document.createElement('div')
-    let newImage = document.createElement('img')
-
+    if(image.primaryImageSmall !== "" & image.primaryImageSmall !== undefined){
+        let newImageDiv = document.createElement('div')
+        let newImage = document.createElement('img')
+        addDetailsClick(newImage)
+        newImageDiv.append(newImage)
+        imageContainer.append(newImageDiv)
     newImage.src = image.primaryImageSmall
-    //newImage.setAttribute("id", image.id)
-    
-    //addDeleteButton(newImageDiv)
-    addDetailsClick(newImage)
-
-    newImageDiv.append(newImage)
-    imageContainer.append(newImageDiv)
-    // imageCounter++; //used to make columns/rows
+  }
+    else if(image.primaryImage !== "" & image.primaryImage !== undefined){
+      let newImageDiv = document.createElement('div')
+      let newImage = document.createElement('img')
+      newImage.src = image.primaryImage
+      addDetailsClick(newImage)
+      newImageDiv.append(newImage)
+      imageContainer.append(newImageDiv)
+    }
 }
 
+
+function showFavorites(){
+
+}
 
 //***********END RENDER FUNCTIONS******** */
 
@@ -204,10 +237,14 @@ function populate(){
     .then(response => response.forEach(renderImage))
 }
 
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
+}
 //**********END GENERAL FUNCTION DECLARATION****** */
 
 // //Artwork ratings PATCH request
-
 
 
 // function ratingForm (someImage) {   //add ratings to art pieces
@@ -229,40 +266,6 @@ function populate(){
 
 
 //     patchRating()
-=======
-function ratingForm (someImage) {   //add ratings to art pieces
-  const artForm=document.createElement('form')
-  const artRating=document.createElement('select')
-  artRating.id="rating-form"
-  let ratings = [1,2,3,4,5,6,7,8,9,10]
-  ratings.forEach(el => {
-    let ratingOption=document.createElement('option')
-    ratingOption.value=el
-    ratingOption.textContent=el
-    artRating.append(ratingOption)
-  })
-
-  artRating.addEventListener('select', (e) => {
-    
-  })
-  artRating.type='number'
-  someImage.append(artForm)  
-  artForm.append(artRating)  
-}
-
-
-function patchRating(id) {
-  fetch(`http://localhost:3000/masterpieces/${id}`, {
-    method:'PATCH',
-    headers: {
-      'Content-Type': 'application/json'},
-    body: JSON.stringify(id)
-    })
-    .then(res=>res.json())
-    
-  }
-
-
 
 
 //***********ADD-DELETE-BUTTON FUNCTION******** */
@@ -314,7 +317,7 @@ removeFavBtn.addEventListener('click', () => {
 })
 
 
-//RATING EVENT LISTENER
+//GENERAL EVENT LISTENERS
 rating.addEventListener('change', () => {
   checkForRating()
 })
@@ -335,5 +338,10 @@ searchForm.addEventListener('submit', (event) => {
 
   searchForm.querySelector('#form_input').value = ""
 })
+
+showFaveBtn.addEventListener('click', () => {
+    renderFavorites()
+})
+
 //**************function invokation*** */
 populate()
